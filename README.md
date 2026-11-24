@@ -1,6 +1,6 @@
 # 홍인표 ♥ 황주은 모바일 청첩장
 
-**https://inpyoinpyo.github.io/wedding-invitation/**
+**https://inpyo6262.github.io/wedding-invitation/**
 
 2027년 3월 13일 토요일 오후 12시 30분 · 아벤티움 서울 3층 단독홀
 
@@ -82,7 +82,7 @@ service cloud.firestore {
 }
 ```
 
-6. **프로젝트 설정 → 일반 → 승인된 도메인**에 `inpyoinpyo.github.io` 추가
+6. **프로젝트 설정 → 일반 → 승인된 도메인**에 `inpyo6262.github.io` 추가
 
 > 비밀번호는 평문이 아니라 SHA-256 해시로 저장됩니다.
 > 다만 정적 사이트 특성상 삭제 자체는 클라이언트에서 처리되므로,
@@ -95,7 +95,7 @@ service cloud.firestore {
 
 1. [Kakao Developers](https://developers.kakao.com) → 애플리케이션 추가
 2. **앱 키 → JavaScript 키** 를 `config.js` 의 `kakao.jsKey` 에 입력
-3. **플랫폼 → Web → 사이트 도메인**에 `https://inpyoinpyo.github.io` 등록
+3. **플랫폼 → Web → 사이트 도메인**에 `https://inpyo6262.github.io` 등록
 4. 카카오맵을 쓰려면 같은 키를 `kakao.mapKey` 에 넣고,
    **카카오맵 JavaScript SDK** 사용 설정을 켜주세요. (좌표는 이미 입력되어 있습니다)
 

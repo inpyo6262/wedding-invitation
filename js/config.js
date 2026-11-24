@@ -113,7 +113,7 @@ const CONFIG = {
     jsKey: '',     // 카카오 JavaScript 키 → 넣으면 카카오톡 공유 활성화
     mapKey: '',    // 카카오맵 JavaScript 키 → 넣으면 실제 지도 표시
     // 공유 썸네일 절대 URL — images/main.jpg 를 올리면 자동으로 적용됩니다
-    shareImage: 'https://inpyoinpyo.github.io/wedding-invitation/images/main.jpg'
+    shareImage: 'https://inpyo6262.github.io/wedding-invitation/images/main.jpg'
   },
 
   /* ---------- 8. Firebase 방명록 ---------- */
