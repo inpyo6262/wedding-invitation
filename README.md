@@ -35,6 +35,10 @@ images/gallery/     갤러리 사진 (1.jpg, 2.jpg, …)
 
 부모님이 돌아가신 경우 `late: true` 로 두면 이름 앞에 `故` 가 붙습니다.
 
+> ⚠️ **이름·날짜·장소를 바꾸면 `index.html` 윗부분의 `<title>` 과 `og:` 태그도 같이 고쳐주세요.**
+> 카카오톡·문자의 링크 미리보기를 만드는 쪽은 자바스크립트를 실행하지 않아서,
+> HTML에 직접 적힌 값만 읽어갑니다.
+
 ---
 
 ## 2. 사진 넣기
@@ -125,11 +129,13 @@ firebase deploy --only firestore:rules
 ## 5. 로컬에서 확인하기
 
 ```powershell
-python -m http.server 4173
+python tools/devserver.py
 ```
 
 브라우저에서 `http://localhost:4173` 으로 접속합니다.
-(`index.html` 을 더블클릭해서 열면 방명록 모듈이 동작하지 않습니다.)
+
+- `index.html` 을 더블클릭해서 열면 **방명록이 동작하지 않습니다.** 반드시 서버로 여세요.
+- 이 서버는 캐시를 꺼두기 때문에, 파일을 고치고 새로고침하면 바로 반영됩니다.
 
 ---
 

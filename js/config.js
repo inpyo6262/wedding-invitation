@@ -112,8 +112,8 @@ const CONFIG = {
   kakao: {
     jsKey: '',     // 카카오 JavaScript 키 → 넣으면 카카오톡 공유 활성화
     mapKey: '',    // 카카오맵 JavaScript 키 → 넣으면 실제 지도 표시
-    // 공유 썸네일 절대 URL — images/main.jpg 를 올리면 자동으로 적용됩니다
-    shareImage: 'https://inpyo6262.github.io/wedding-invitation/images/main.jpg'
+    // 공유 썸네일 (1200x630 가로 이미지) — index.html 의 og:image 와 같은 값이어야 합니다
+    shareImage: 'https://inpyo6262.github.io/wedding-invitation/images/share.jpg'
   },
 
   /* ---------- 8. Firebase 방명록 ---------- */
