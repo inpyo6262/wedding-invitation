@@ -117,14 +117,15 @@ const CONFIG = {
   },
 
   /* ---------- 8. Firebase 방명록 ---------- */
-  // Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹) 에서 복사한 값을 넣어주세요.
+  // Firebase 콘솔 > 프로젝트 설정 > 내 앱(웹) 의 값입니다.
+  // 이 키들은 웹에 공개되는 값이며, 실제 보안은 firestore.rules 가 담당합니다.
   firebase: {
-    apiKey: '',
-    authDomain: '',
-    projectId: '',
-    storageBucket: '',
-    messagingSenderId: '',
-    appId: ''
+    apiKey: 'AIzaSyDbZph_XP3-xHgWiC9j9AMJ5wUVjBeVCR4',
+    authDomain: 'inpyo-f9105.firebaseapp.com',
+    projectId: 'inpyo-f9105',
+    storageBucket: 'inpyo-f9105.firebasestorage.app',
+    messagingSenderId: '901781141982',
+    appId: '1:901781141982:web:45c16d294f8f6f0579454f'
   },
   guestbook: {
     collection: 'guestbook',

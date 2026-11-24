@@ -54,40 +54,48 @@ images/gallery/     갤러리 사진 (1.jpg, 2.jpg, …)
 
 ---
 
-## 3. 방명록 (Firebase) 설정
+## 3. 방명록 (Firebase) — 설정 완료 ✅
 
-1. [Firebase 콘솔](https://console.firebase.google.com) → **프로젝트 추가**
-2. 좌측 **빌드 → Firestore Database → 데이터베이스 만들기**
-   - 위치는 `asia-northeast3 (서울)` 권장
-   - 모드는 **프로덕션 모드**로 시작 (규칙은 아래 4번에서 교체)
-3. **프로젝트 설정 → 내 앱 → 웹(`</>`)** 추가 → `firebaseConfig` 값 복사
-4. 복사한 값을 `js/config.js` 의 `firebase` 항목에 붙여넣기
-5. Firestore **규칙** 탭에 아래 내용을 붙여넣고 게시:
+| | |
+| --- | --- |
+| 프로젝트 | `inpyo-f9105` (표시 이름 `inpyo`) |
+| 요금제 | Spark (무료) — 하루 읽기 5만 / 쓰기 2만 건 |
+| 데이터베이스 | Firestore Native, `asia-northeast3` (서울) |
+| 컬렉션 | `guestbook` |
+| 콘솔 | https://console.firebase.google.com/project/inpyo-f9105 |
 
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /guestbook/{doc} {
-      allow read: if true;
-      allow create: if request.resource.data.keys().hasOnly(['name','msg','pw','createdAt'])
-                    && request.resource.data.name is string
-                    && request.resource.data.name.size() <= 12
-                    && request.resource.data.msg is string
-                    && request.resource.data.msg.size() <= 300;
-      allow delete: if true;
-      allow update: if false;
-    }
-  }
-}
+키는 `js/config.js` 의 `firebase` 항목에 들어 있습니다.
+**이 키들은 웹에 공개되는 값이 맞습니다.** Firebase 웹 SDK는 원래 그렇게 동작하고,
+실제 보안은 아래 규칙이 담당합니다.
+
+### 보안 규칙
+
+규칙은 [`firestore.rules`](firestore.rules) 파일로 관리합니다.
+콘솔에서 직접 고치지 말고 파일을 수정한 뒤 배포하세요.
+
+```powershell
+firebase deploy --only firestore:rules
 ```
 
-6. **프로젝트 설정 → 일반 → 승인된 도메인**에 `inpyo6262.github.io` 추가
+현재 걸려 있는 제한:
 
-> 비밀번호는 평문이 아니라 SHA-256 해시로 저장됩니다.
-> 다만 정적 사이트 특성상 삭제 자체는 클라이언트에서 처리되므로,
-> 완전한 보안이 필요하면 Cloud Functions 로 옮기는 편이 좋습니다.
-> `config.js` 의 `guestbook.adminPassword` 를 정해두면 어떤 글이든 지울 수 있습니다.
+- 이름 1~12자, 메시지 1~300자
+- 지정한 4개 필드(`name`, `msg`, `pw`, `createdAt`) 외에는 저장 불가
+- 작성 시각은 **서버 시각만** 인정 (조작 방지)
+- 수정 불가
+- `guestbook` 외 다른 경로는 전부 차단
+
+> 규칙을 배포해도 적용까지 **1분 정도** 걸립니다. 바로 안 되면 잠시 기다리세요.
+
+### 글 삭제
+
+비밀번호는 평문이 아니라 **SHA-256 해시**로 저장됩니다.
+다만 정적 사이트라 삭제 판정은 브라우저에서 이뤄지므로, 마음먹은 사람은 우회할 수 있습니다.
+하객 방명록 수준에서는 충분하지만, 엄격히 막으려면 Cloud Functions 로 옮겨야 합니다.
+
+`config.js` 의 `guestbook.adminPassword` 를 정해두면 어떤 글이든 그 비밀번호로 지울 수 있습니다.
+글을 통째로 지우려면 [콘솔의 Firestore Database](https://console.firebase.google.com/project/inpyo-f9105/firestore)
+에서 문서를 삭제하면 됩니다.
 
 ---
 
