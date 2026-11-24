@@ -8,53 +8,75 @@
 const CONFIG = {
   /* ---------- 1. 신랑 ---------- */
   groom: {
-    name: '김민준',            // 이름
-    nameEn: 'Minjun',          // 영문 이름 (푸터용)
-    relation: '장남',          // 장남 / 차남 / 아들 ...
-    phone: '010-1234-5678',
-    father: { name: '김영수', phone: '010-1111-1111', late: false }, // late:true 면 '故'
-    mother: { name: '이정희', phone: '010-2222-2222', late: false },
-    // 계좌는 여러 개 넣을 수 있습니다.
+    name: '홍인표',
+    nameEn: 'Inpyo',
+    relation: '아들',
+    phone: '010-2777-6262',
+    father: { name: '홍태훈', phone: '010-6886-5900', late: false }, // late:true 면 '故'
+    mother: { name: '유필순', phone: '010-3480-6262', late: false },
+    // 계좌는 여러 개 넣을 수 있습니다. number 가 비어 있으면 그 줄은 표시되지 않습니다.
     accounts: [
-      { label: '신랑',        bank: '국민은행', number: '123456-01-123456', holder: '김민준', kakaopay: '' },
-      { label: '아버지 김영수', bank: '신한은행', number: '110-123-456789',   holder: '김영수', kakaopay: '' },
-      { label: '어머니 이정희', bank: '농협은행', number: '302-1234-5678-01', holder: '이정희', kakaopay: '' }
+      { label: '신랑 홍인표',   bank: '', number: '', holder: '홍인표', kakaopay: '' },
+      { label: '아버지 홍태훈', bank: '', number: '', holder: '홍태훈', kakaopay: '' },
+      { label: '어머니 유필순', bank: '', number: '', holder: '유필순', kakaopay: '' }
     ],
-    // 화환 보내기 링크 (없으면 '')
-    wreathUrl: ''
+    wreathUrl: '' // 화환 보내기 링크 (없으면 '')
   },
 
   /* ---------- 2. 신부 ---------- */
   bride: {
-    name: '박서연',
-    nameEn: 'Seoyeon',
-    relation: '장녀',
-    phone: '010-8765-4321',
-    father: { name: '박성호', phone: '010-3333-3333', late: false },
-    mother: { name: '최은주', phone: '010-4444-4444', late: false },
+    name: '황주은',
+    nameEn: 'Jueun',
+    relation: '딸',
+    phone: '010-7938-0604',
+    father: { name: '황동한', phone: '', late: false },
+    mother: { name: '김혜란', phone: '', late: false },
     accounts: [
-      { label: '신부',        bank: '카카오뱅크', number: '3333-01-1234567',  holder: '박서연', kakaopay: '' },
-      { label: '아버지 박성호', bank: '우리은행',   number: '1002-123-456789', holder: '박성호', kakaopay: '' },
-      { label: '어머니 최은주', bank: '하나은행',   number: '123-456789-01234', holder: '최은주', kakaopay: '' }
+      { label: '신부 황주은',   bank: '', number: '', holder: '황주은', kakaopay: '' },
+      { label: '아버지 황동한', bank: '', number: '', holder: '황동한', kakaopay: '' },
+      { label: '어머니 김혜란', bank: '', number: '', holder: '김혜란', kakaopay: '' }
     ],
     wreathUrl: ''
   },
 
   /* ---------- 3. 예식 ---------- */
   wedding: {
-    date: '2027-05-15',        // YYYY-MM-DD
+    date: '2027-03-13',        // YYYY-MM-DD (토요일)
     time: '12:30',             // 24시간 표기 HH:MM
-    venue: '그랜드 컨벤션',      // 웨딩홀 이름
-    hall: '3층 그랜드볼룸',      // 홀 이름 / 층
-    tel: '02-123-4567',        // 웨딩홀 대표번호 (없으면 '')
-    addressRoad: '서울특별시 강남구 테헤란로 123',  // 도로명 주소
-    addressJibun: '역삼동 123-45',                 // 지번 주소
-    lat: 37.5006,              // 위도 (카카오맵 키 넣었을 때 사용)
-    lng: 127.0366,             // 경도
+    venue: '아벤티움 서울',
+    hall: '3층 단독홀',
+    tel: '02-313-2480',
+    addressRoad: '서울특별시 중구 청파로 464 브라운스톤서울 3층',
+    addressJibun: '중구 중림동 355',
+    lat: 37.5581,              // 티맵 버튼 / 카카오맵용
+    lng: 126.9684,
     transport: [
-      { icon: '🚇', title: '지하철', lines: ['2호선 역삼역 3번 출구에서 도보 5분', '9호선 언주역 7번 출구에서 도보 10분'] },
-      { icon: '🚌', title: '버스',   lines: ['간선 146, 360, 740 — 역삼역 하차', '지선 4412, 6411 — 테헤란로 하차'] },
-      { icon: '🚗', title: '자가용', lines: ['내비게이션에 "그랜드 컨벤션" 검색', '건물 지하 2~5층 주차장 2시간 무료'] }
+      {
+        icon: '🚇', title: '지하철',
+        lines: [
+          '2·5호선 충정로역 4번 출구 — 도보 3분',
+          '출구 방향으로 70m 직진 후 횡단보도 건너편 브라운스톤서울 3층',
+          '1·4호선·공항철도 서울역 15번 출구 — 도보 10분',
+          '“서울역 서부광장” 방향으로 나오신 후 한국경제신문사 방향 맞은편'
+        ]
+      },
+      {
+        icon: '🚌', title: '버스',
+        lines: [
+          '한국경제신문사 하차 — 마을 서대문06 / 간선 370, 603 / 지선 7011, 7013A, 7013B, 7017 / 공항 6015',
+          '종근당·충정로역 하차 — 간선 172, 472, 603 / 지선 7011, 7013A, 7013B, 7017',
+          '서울역 서부 하차 — 간선 173, 261, 262, 463, 503, 604 / 지선 7021, 7024',
+          '경찰청·동북아역사재단 하차 — 간선 103, 150, 701, 704, 708, 709, 742, 750A, 750B, 752'
+        ]
+      },
+      {
+        icon: '🚗', title: '자가용 · 주차',
+        lines: [
+          '본관주차장 — 브라운스톤서울 (중구 청파로 464)',
+          '별관주차장 — 서소문공원 (중구 칠패로 5)',
+          '별관(서소문공원) 주차장을 이용하시면 더 여유롭게 주차하실 수 있습니다'
+        ]
+      }
     ]
   },
 
@@ -62,30 +84,25 @@ const CONFIG = {
   greeting: {
     eyebrow: 'Invite you',
     subtitle: '소중한 당신을 초대합니다.',
+    // acrostic: true 면 각 줄 첫 글자가 강조됩니다 (인 · 표 · 주 · 은)
+    acrostic: true,
     body: [
-      '오월의 어느 봄날,',
-      '늘 곁에서 아껴주셨던 고마운 분들을 모십니다.',
-      '',
-      '있는 그대로 사랑하고',
-      '서로의 존재를 감사하며',
-      '인연이었던 저희 두 사람',
-      '',
-      '같이 있으면 기분 좋아지는 그대와 함께',
-      '인생의 길을 걸어가겠습니다.'
+      '인도하시는 하나님의 손길 안에서',
+      '표현할 수 없는 기쁨으로 만난 두 사람이',
+      '주님 앞에 언약을 맺습니다',
+      '은혜로 세워질 가정의 시작을 함께 축복해주세요'
     ]
   },
 
   /* ---------- 5. 사진 ---------- */
   photos: {
-    // 메인 사진 (images/main.jpg 로 넣어주세요)
-    main: 'images/main.jpg',
-    // 갤러리: images/gallery/1.jpg ~ N.jpg
-    galleryPath: 'images/gallery/',
+    main: 'images/main.jpg',              // 메인 사진
+    galleryPath: 'images/gallery/',       // images/gallery/1.jpg ~ N.jpg
     galleryExt: '.jpg',
     galleryCount: 12
   },
 
-  /* ---------- 6. 배경음악 (현재 사용 안 함) ---------- */
+  /* ---------- 6. 배경음악 (사용 안 함) ---------- */
   bgm: {
     enabled: false,
     src: 'assets/bgm.mp3'
@@ -93,9 +110,9 @@ const CONFIG = {
 
   /* ---------- 7. 카카오 (선택) ---------- */
   kakao: {
-    jsKey: '',   // 카카오 JavaScript 키 → 넣으면 카카오톡 공유 활성화
-    mapKey: '',  // 카카오맵 JavaScript 키 → 넣으면 실제 지도 표시
-    shareImage: '' // 공유 썸네일 이미지 절대 URL (예: https://아이디.github.io/레포/images/main.jpg)
+    jsKey: '',     // 카카오 JavaScript 키 → 넣으면 카카오톡 공유 활성화
+    mapKey: '',    // 카카오맵 JavaScript 키 → 넣으면 실제 지도 표시
+    shareImage: '' // 공유 썸네일 절대 URL (예: https://아이디.github.io/레포/images/main.jpg)
   },
 
   /* ---------- 8. Firebase 방명록 ---------- */
@@ -111,7 +128,7 @@ const CONFIG = {
   guestbook: {
     collection: 'guestbook',
     pageSize: 5,
-    adminPassword: '' // 비우면 글쓴이가 입력한 비밀번호로만 삭제 가능
+    adminPassword: '' // 정해두면 어떤 글이든 이 비밀번호로 삭제 가능
   }
 };
 

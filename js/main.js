@@ -106,10 +106,21 @@
      3. 인사말 + 혼주
      ============================================================ */
   function renderGreeting() {
-    var html = (C.greeting.body || []).map(function (line) {
-      return line === '' ? '<span class="sp"></span>' : esc(line);
-    }).join('<br>').replace(/<br><span class="sp"><\/span><br>/g, '<span class="sp"></span>');
-    $('greetingBody').innerHTML = html;
+    var body = $('greetingBody');
+    var lines = C.greeting.body || [];
+
+    if (C.greeting.acrostic) {
+      /* 삼행시 — 각 줄 첫 글자를 강조하고 왼쪽으로 정렬합니다 */
+      body.classList.add('is-acrostic');
+      body.innerHTML = lines.filter(function (l) { return l !== ''; }).map(function (line) {
+        return '<span class="gl"><b class="ac">' + esc(line.charAt(0)) + '</b>' +
+          '<span class="gt">' + esc(line.slice(1)) + '</span></span>';
+      }).join('');
+    } else {
+      body.innerHTML = lines.map(function (line) {
+        return line === '' ? '<span class="sp"></span>' : esc(line);
+      }).join('<br>').replace(/<br><span class="sp"><\/span><br>/g, '<span class="sp"></span>');
+    }
 
     var wrap = $('family');
     [C.groom, C.bride].forEach(function (p) {
@@ -371,6 +382,20 @@
      ============================================================ */
   function renderAccounts() {
     var wrap = $('accounts');
+
+    /* 계좌도 화환 링크도 없으면 섹션 자체를 숨깁니다 */
+    var hasAccount = [C.groom, C.bride].some(function (p) {
+      return (p.accounts || []).some(function (a) { return a.number; });
+    });
+    var hasWreath = !!(C.groom.wreathUrl || C.bride.wreathUrl);
+    if (!hasAccount && !hasWreath) {
+      $('secAcc').hidden = true;
+      return;
+    }
+    if (!hasAccount) {
+      document.querySelector('.acc__desc').hidden = true;
+      document.querySelector('#secAcc .title').textContent = '축하 화환 보내기';
+    }
     [['신랑측', C.groom], ['신부측', C.bride]].forEach(function (pair) {
       var label = pair[0], p = pair[1];
       var list = (p.accounts || []).filter(function (a) { return a.number; });

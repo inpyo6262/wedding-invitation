@@ -165,6 +165,28 @@ a{color:inherit;}
 }
 .greeting__body .sp{display:block;height:14px;}
 
+/* 삼행시 모드 */
+.greeting__body.is-acrostic{
+  display:inline-block;
+  text-align:left;
+  font-size:14.5px;
+  line-height:2.05;
+  max-width:300px;
+}
+.greeting__body.is-acrostic .gl{
+  display:flex;
+  align-items:baseline;
+  margin:7px 0;
+}
+.greeting__body.is-acrostic .ac{
+  flex:none;
+  font-weight:400;
+  font-size:1.3em;
+  color:var(--accent);
+  line-height:1;
+}
+.greeting__body.is-acrostic .gt{flex:1;}
+
 .family{
   margin:34px 0 28px;
   display:grid;
