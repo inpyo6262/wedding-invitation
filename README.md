@@ -1,4 +1,8 @@
-# 모바일 청첩장
+# 홍인표 ♥ 황주은 모바일 청첩장
+
+**https://inpyoinpyo.github.io/wedding-invitation/**
+
+2027년 3월 13일 토요일 오후 12시 30분 · 아벤티움 서울 3층 단독홀
 
 바닐라 HTML / CSS / JavaScript 로 만든 모바일 청첩장입니다.
 빌드 과정이 없어서 GitHub Pages 에 파일을 올리면 바로 동작합니다.
@@ -74,7 +78,7 @@ service cloud.firestore {
 }
 ```
 
-6. **프로젝트 설정 → 일반 → 승인된 도메인**에 `<아이디>.github.io` 추가
+6. **프로젝트 설정 → 일반 → 승인된 도메인**에 `inpyoinpyo.github.io` 추가
 
 > 비밀번호는 평문이 아니라 SHA-256 해시로 저장됩니다.
 > 다만 정적 사이트 특성상 삭제 자체는 클라이언트에서 처리되므로,
@@ -87,14 +91,22 @@ service cloud.firestore {
 
 1. [Kakao Developers](https://developers.kakao.com) → 애플리케이션 추가
 2. **앱 키 → JavaScript 키** 를 `config.js` 의 `kakao.jsKey` 에 입력
-3. **플랫폼 → Web → 사이트 도메인**에 `https://<아이디>.github.io` 등록
+3. **플랫폼 → Web → 사이트 도메인**에 `https://inpyoinpyo.github.io` 등록
 4. 카카오맵을 쓰려면 같은 키를 `kakao.mapKey` 에 넣고,
-   **카카오맵 JavaScript SDK** 사용 설정을 켠 뒤 `wedding.lat` / `wedding.lng` 를 채워주세요.
+   **카카오맵 JavaScript SDK** 사용 설정을 켜주세요. (좌표는 이미 입력되어 있습니다)
 
 키가 없으면 카카오 공유 버튼은 숨겨지고, 지도는 주소 카드 + 지도앱 버튼으로 표시됩니다.
 
-공유 썸네일은 `kakao.shareImage` 에 **절대 주소**로 넣어야 합니다.
-예: `https://<아이디>.github.io/<레포>/images/main.jpg`
+공유 썸네일 주소(`kakao.shareImage`)는 이미 설정되어 있습니다.
+`images/main.jpg` 를 올리는 순간 자동으로 적용됩니다.
+
+---
+
+## 검색엔진 노출
+
+연락처·계좌번호가 들어가므로 `robots.txt` 와 `<meta name="robots" content="noindex">` 로
+검색엔진 수집을 막아두었습니다. 링크를 아는 사람은 그대로 볼 수 있습니다.
+검색에도 노출되길 원하시면 두 곳을 지우면 됩니다.
 
 ---
 
