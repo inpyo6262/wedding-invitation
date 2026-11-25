@@ -17,7 +17,7 @@ const CONFIG = {
     // 계좌는 여러 개 넣을 수 있습니다. number 가 비어 있으면 그 줄은 표시되지 않습니다.
     accounts: [
       { label: '신랑 홍인표',   bank: '', number: '', holder: '홍인표', kakaopay: '' },
-      { label: '아버지 홍태훈', bank: '', number: '', holder: '홍태훈', kakaopay: '' },
+      { label: '아버지 홍태훈', bank: '농협', number: '312-01090404-61', holder: '홍태훈', kakaopay: '' },
       { label: '어머니 유필순', bank: '', number: '', holder: '유필순', kakaopay: '' }
     ],
     wreathUrl: '' // 화환 보내기 링크 (없으면 '')
