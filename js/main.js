@@ -367,7 +367,7 @@
       window.kakao.maps.load(function () {
         var pos = new kakao.maps.LatLng(C.wedding.lat, C.wedding.lng);
         $('mapPh').remove();
-        var map = new kakao.maps.Map($('map'), { center: pos, level: 4 });
+        var map = new kakao.maps.Map($('map'), { center: pos, level: C.wedding.mapLevel || 4 });
         new kakao.maps.Marker({ map: map, position: pos });
         map.addControl(new kakao.maps.ZoomControl(), kakao.maps.ControlPosition.RIGHT);
       });
