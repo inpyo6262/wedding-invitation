@@ -27,7 +27,7 @@ images/gallery/     갤러리 사진 (1.jpg, 2.jpg, …)
 | 항목 | 설명 |
 | --- | --- |
 | `groom` / `bride` | 이름, 영문 이름, 장남·장녀 표기, 전화번호, 부모님, 계좌 |
-| `wedding` | 날짜(`YYYY-MM-DD`), 시간(`HH:MM`), 웨딩홀, 홀 이름, 주소, 교통편 |
+| `wedding` | 날짜(`YYYY-MM-DD`), 시간(`HH:MM`), 웨딩홀, 홀 이름, 주소, 지도 검색어, 교통편 |
 | `greeting` | 인사말 문구 (배열의 `''` 는 한 줄 띄기) |
 | `photos` | 메인 사진 경로, 갤러리 장수 |
 | `kakao` | 카카오 공유 / 카카오맵 키 (선택) |
@@ -103,18 +103,42 @@ firebase deploy --only firestore:rules
 
 ---
 
-## 4. 카카오톡 공유 / 지도 (선택)
+## 4. 카카오톡 공유 / 지도
 
-1. [Kakao Developers](https://developers.kakao.com) → 애플리케이션 추가
-2. **앱 키 → JavaScript 키** 를 `config.js` 의 `kakao.jsKey` 에 입력
-3. **플랫폼 → Web → 사이트 도메인**에 `https://inpyo6262.github.io` 등록
-4. 카카오맵을 쓰려면 같은 키를 `kakao.mapKey` 에 넣고,
-   **카카오맵 JavaScript SDK** 사용 설정을 켜주세요. (좌표는 이미 입력되어 있습니다)
+### 카카오톡 공유 — 설정 완료 ✅
 
-키가 없으면 카카오 공유 버튼은 숨겨지고, 지도는 주소 카드 + 지도앱 버튼으로 표시됩니다.
+| | |
+| --- | --- |
+| 앱 이름 | 홍인표 황주은 청첩장 |
+| 앱 ID | 1665214 |
+| 등록 도메인 | `https://inpyo6262.github.io` |
+| 콘솔 | https://developers.kakao.com/console/app/1665214 |
 
-공유 썸네일 주소(`kakao.shareImage`)는 이미 설정되어 있습니다.
-`images/main.jpg` 를 올리는 순간 자동으로 적용됩니다.
+JavaScript 키는 `config.js` 의 `kakao.jsKey` 에 들어 있습니다.
+**이 키는 웹에 공개되는 값이 맞습니다.** 등록한 도메인에서만 동작하도록 카카오가 막아줍니다.
+
+> 링크를 붙여넣었을 때 나오는 미리보기는 **키와 무관합니다.**
+> 그건 `index.html` 의 `og:` 태그를 카카오가 읽어가는 것이고, 키가 없어도 나옵니다.
+> 키가 하는 일은 청첩장 안의 **카카오톡 공유 버튼**입니다.
+
+### 지도 — 아직 안 켬
+
+`kakao.mapKey` 가 비어 있어서 **오시는 길에 지도 그림이 없습니다.**
+주소 카드 + 지도앱 버튼만 나옵니다.
+
+켜려면 [콘솔 → 제품 설정 → 카카오맵](https://developers.kakao.com/console/app/1665214/product/kakao-map)
+에서 사용 설정을 켜고, 같은 JavaScript 키를 `kakao.mapKey` 에 넣으면 됩니다. 좌표는 이미 입력되어 있습니다.
+
+> ⚠️ 카카오맵은 **처음 활성화한 앱 하나만** 일간 무료 쿼터를 받고, 그 뒤로는 되돌릴 수 없습니다.
+
+### 지도앱 버튼
+
+카카오맵 · 네이버지도 · 티맵 세 버튼은 모두 `config.js` 의 **`wedding.searchName`** 으로 검색합니다.
+주소로 검색하면 건물(브라운스톤서울)만 나와서 예식장을 다시 찾아야 하므로, 상호명으로 검색합니다.
+
+```js
+searchName: '채플웨딩홀 아벤티움'
+```
 
 ---
 
