@@ -121,15 +121,24 @@ JavaScript 키는 `config.js` 의 `kakao.jsKey` 에 들어 있습니다.
 > 그건 `index.html` 의 `og:` 태그를 카카오가 읽어가는 것이고, 키가 없어도 나옵니다.
 > 키가 하는 일은 청첩장 안의 **카카오톡 공유 버튼**입니다.
 
-### 지도 — 아직 안 켬
+### 지도 — 설정 완료 ✅
 
-`kakao.mapKey` 가 비어 있어서 **오시는 길에 지도 그림이 없습니다.**
-주소 카드 + 지도앱 버튼만 나옵니다.
+[콘솔 → 제품 설정 → 카카오맵](https://developers.kakao.com/console/app/1665214/product/kakao-map)
+에서 사용 설정을 켰고, 같은 JavaScript 키가 `kakao.mapKey` 에 들어 있습니다.
+무료 쿼터는 이 앱이 받고 있습니다. (처음 활성화한 앱 하나만 받으며 되돌릴 수 없습니다)
 
-켜려면 [콘솔 → 제품 설정 → 카카오맵](https://developers.kakao.com/console/app/1665214/product/kakao-map)
-에서 사용 설정을 켜고, 같은 JavaScript 키를 `kakao.mapKey` 에 넣으면 됩니다. 좌표는 이미 입력되어 있습니다.
+좌표는 **카카오맵에 등록된 예식장 자체의 좌표**입니다.
+주소를 지오코딩한 값이 아니라서, 지도 버튼으로 열리는 위치와 핀이 같은 곳을 가리킵니다.
 
-> ⚠️ 카카오맵은 **처음 활성화한 앱 하나만** 일간 무료 쿼터를 받고, 그 뒤로는 되돌릴 수 없습니다.
+```js
+lat: 37.560983, lng: 126.968151
+```
+
+> 웨딩홀이 바뀌면 좌표도 같이 바꿔야 합니다. 브라우저 콘솔에서 이렇게 받으면 됩니다.
+>
+> ```js
+> new kakao.maps.services.Places().keywordSearch('예식장 이름', console.log)
+> ```
 
 ### 지도앱 버튼
 
