@@ -18,7 +18,7 @@ const CONFIG = {
     accounts: [
       { label: '신랑 홍인표',   bank: '', number: '', holder: '홍인표', kakaopay: '' },
       { label: '아버지 홍태훈', bank: '농협', number: '312-01090404-61', holder: '홍태훈', kakaopay: '' },
-      { label: '어머니 유필순', bank: '', number: '', holder: '유필순', kakaopay: '' }
+      { label: '어머니 유필순', bank: '국민', number: '402601-04-027400', holder: '유필순', kakaopay: '' }
     ],
     wreathUrl: '' // 화환 보내기 링크 (없으면 '')
   },

@@ -408,7 +408,7 @@
       var inner = el('div', 'acc__inner');
       list.forEach(function (a) {
         var item = el('div', 'acc__item');
-        var full = a.bank + ' ' + a.number;
+        var full = a.bank + ' ' + a.number;   /* 화면 표시용 — 복사는 번호만 */
         item.innerHTML =
           '<p class="acc__role">' + esc(a.label || '') + '</p>' +
           '<p class="acc__num"><span class="txt">' + esc(full) + '</span>' +
@@ -416,7 +416,7 @@
           '<p class="acc__role" style="margin-top:4px">예금주 ' + esc(a.holder || '') + '</p>' +
           (a.kakaopay ? '<a class="acc__kakao" href="' + esc(a.kakaopay) + '" target="_blank" rel="noopener">카카오페이로 송금</a>' : '');
         item.querySelector('.copy').addEventListener('click', function () {
-          copyText(full, '계좌번호가 복사되었습니다');
+          copyText(a.number, '계좌번호가 복사되었습니다');
         });
         inner.appendChild(item);
       });
