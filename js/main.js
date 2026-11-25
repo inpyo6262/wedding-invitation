@@ -327,15 +327,13 @@
 
     $('mapPhText').innerHTML = esc(w.venue) + '<br>' + esc(w.addressRoad || '');
 
-    /* 지도 앱 버튼 */
-    var q = encodeURIComponent((w.venue || '') + ' ' + (w.addressRoad || ''));
+    /* 지도 앱 버튼 — 세 곳 모두 searchName 으로 검색합니다 */
+    var q = encodeURIComponent(w.searchName || w.venue || '');
     var btns = [
-      { t: '카카오맵', u: 'https://map.kakao.com/link/search/' + q },
-      { t: '네이버지도', u: 'https://map.naver.com/p/search/' + q }
+      { t: '카카오맵',   u: 'https://map.kakao.com/link/search/' + q },
+      { t: '네이버지도', u: 'https://map.naver.com/p/search/' + q },
+      { t: '티맵',       u: 'tmap://search?name=' + q }
     ];
-    if (w.lat && w.lng) {
-      btns.push({ t: '티맵', u: 'tmap://route?goalname=' + encodeURIComponent(w.venue) + '&goalx=' + w.lng + '&goaly=' + w.lat });
-    }
     var bw = $('mapBtns');
     btns.forEach(function (b) {
       var a = el('a', 'chip', esc(b.t));

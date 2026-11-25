@@ -46,9 +46,11 @@ const CONFIG = {
     venue: '아벤티움 서울',
     hall: '3층 단독홀',
     tel: '02-313-2480',
+    // 지도 앱 버튼이 검색할 말 (비우면 venue 로 검색)
+    searchName: '채플웨딩홀 아벤티움',
     addressRoad: '서울특별시 중구 청파로 464 브라운스톤서울 3층',
     addressJibun: '중구 중림동 355',
-    lat: 37.5581,              // 티맵 버튼 / 카카오맵용
+    lat: 37.5581,              // 지도 표시용 (카카오맵 SDK)
     lng: 126.9684,
     transport: [
       {
