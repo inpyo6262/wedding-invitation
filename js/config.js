@@ -50,8 +50,8 @@ const CONFIG = {
     searchName: '채플웨딩홀 아벤티움',
     addressRoad: '서울특별시 중구 청파로 464 브라운스톤서울 3층',
     addressJibun: '중구 중림동 355',
-    lat: 37.5581,              // 지도 표시용 (카카오맵 SDK)
-    lng: 126.9684,
+    lat: 37.560819,            // 지도 표시용 — 카카오 지오코더로 받은 청파로 464 좌표
+    lng: 126.968226,
     transport: [
       {
         icon: '🚇', title: '지하철',
